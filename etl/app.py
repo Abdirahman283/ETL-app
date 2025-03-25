@@ -25,10 +25,31 @@ def main():
     transformer = Transformation(df)
     
     # Appliquer les transformations
-    df_transformed = transformer.delete_null_columns()
-    df_transformed = transformer.delete_null_rows()
-    df_transformed = transformer.drop_duplicates()
-    print("✅ Transformation réussie !")
+    choice = input(
+    "📌 Choose the transformations to apply (separate numbers by commas):\n"
+    "1. Delete null columns\n"
+    "2. Delete null rows\n"
+    "3. Drop duplicates\n"
+    "4. Drop specific columns\n"
+    "Your choice: ")
+    choice = [int(i.strip()) for i in choice.split(",") if i.strip().isdigit()]
+    df_transformed = df  # Initialiser avec le DataFrame d'origine
+    for i in choice:
+        if i == 1:
+            df_transformed = transformer.delete_null_columns()
+        elif i == 2:
+            df_transformed = transformer.delete_null_rows()
+        elif i == 3:
+            df_transformed = transformer.drop_duplicates()
+        elif i == 4:
+            print(f"Available columns: {', '.join(df.columns)}")
+            columns = input("Enter the columns you want to drop (comma separated): ").strip()
+            if columns:
+                columns = [col.strip() for col in columns.split(",")]
+                df_transformed = transformer.drop_columns(columns)
+        else:
+            print(f"⚠️ Invalid choice: {i}")
+    print("✅ Transformation completed!")
 
     # Étape 3 : Sauvegarde
     output_format = input("📁 Format de sortie (csv/json) : ").strip().lower()
