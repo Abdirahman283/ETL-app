@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clean Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; }
+        form { max-width: 600px; margin: auto; display: flex; flex-direction: column; }
+        label, input[type="checkbox"] { margin: 5px 0; }
+        button { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <h2>🧼 Clean Your Data</h2>
+
+    <form action="/clean" method="post">
+        <label>
+            <input type="checkbox" name="transforms" value="null_cols"> Delete fully null columns
+        </label>
+        <label>
+            <input type="checkbox" name="transforms" value="null_rows"> Delete fully null rows
+        </label>
+        <label>
+            <input type="checkbox" name="transforms" value="duplicates"> Drop duplicates
+        </label>
+
+        <hr>
+        <p><strong>Select columns to drop manually:</strong></p>
+
+        {% for col in columns %}
+        <label>
+            <input type="checkbox" name="drop_cols" value="{{ col }}"> {{ col }}
+        </label>
+        {% endfor %}
+
+        <button type="submit">Apply Transformations</button>
+    </form>
+
+    <form action="/">
+        <button type="submit">🏠 Home</button>
+    </form>
+
+</body>
+</html>

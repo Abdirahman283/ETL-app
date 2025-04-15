@@ -1,0 +1,33 @@
+<!-- templates/query/execute_query.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Run SQL Queries</title>
+</head>
+<body>
+    <h2>Connected to {{ creds.database }} ({{ db_type.upper() }})</h2>
+
+    <h3>Available Tables:</h3>
+    <ul>
+        {% for table in tables %}
+            <li>{{ table[0] }}</li>
+        {% endfor %}
+    </ul>
+
+    <form action="/run_query" method="post">
+        <label>Enter your SQL query:</label><br>
+        <textarea name="sql_query" rows="5" cols="80" required></textarea><br>
+        
+        {% for key, value in creds.items() %}
+            <input type="hidden" name="{{ key }}" value="{{ value }}">
+        {% endfor %}
+        <input type="hidden" name="db_type" value="{{ db_type }}">
+        
+        <button type="submit">Execute</button>
+    </form>
+
+    <form action="/">
+        <button type="submit">Back to Home</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Save Your Cleaned Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 80px;
+        }
+        .btn-group {
+            margin-top: 30px;
+        }
+        button {
+            margin: 15px;
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>✅ Cleaning completed successfully!</h1>
+    <p>How would you like to save your data?</p>
+
+    <div class="btn-group">
+        <form action="/save_file" method="get">
+            <button type="submit">Save to File</button>
+        </form>
+        <form action="/store" method="get">
+            <button type="submit">Save to Database</button>
+        </form>
+    </div>
+</body>
+</html>

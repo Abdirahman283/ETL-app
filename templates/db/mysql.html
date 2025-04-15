@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Connect to MySQL</title>
+</head>
+<body>
+    <h2>MySQL Credentials</h2>
+    <form action="/store_mysql" method="post">
+        <label>Host:</label>
+        <input type="text" name="host" value="mysql" required><br>
+
+        <label>Port:</label>
+        <input type="text" name="port" value="3306" required><br>
+
+        <label>User:</label>
+        <input type="text" name="user" value="etluser" required><br>
+
+        <label>Password:</label>
+        <input type="password" name="password" value="etlpass" required><br>
+
+        <label>Database:</label>
+        <input type="text" name="database" value="etl_db" required><br>
+
+        <label>Table name:</label>
+        <input type="text" name="table" required><br><br>
+
+        <button type="submit">Insert Data</button>
+    </form>
+
+    <form action="/">
+        <button type="submit">Back to Home</button>
+    </form>
+</body>
+</html>

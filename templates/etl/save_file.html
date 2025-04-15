@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Save File</title>
+</head>
+<body>
+    <h2>💾 Save Transformed Data</h2>
+    <form method="POST">
+        <label>Format:</label>
+        <select name="format">
+            <option value="csv">CSV</option>
+            <option value="json">JSON</option>
+        </select><br><br>
+
+        <label>Output folder path:</label>
+        <input type="text" name="path" placeholder="/app/outputs" required><br><br>
+
+        <button type="submit">Save</button>
+    </form>
+    <br>
+    <form action="/">
+        <button type="submit">🏠 Back to Home</button>
+    </form>
+</body>
+</html>

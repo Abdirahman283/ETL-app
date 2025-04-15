@@ -1,0 +1,17 @@
+<!-- templates/query/connect_query.html -->
+<h2>🔍 Connect to a Database</h2>
+<form method="post" action="/query">
+    <label>Database Type:</label><br>
+    <select name="db_type">
+        <option value="postgres">PostgreSQL</option>
+        <option value="mysql">MySQL</option>
+    </select><br><br>
+
+    <label>Host:</label><input type="text" name="host" value="localhost"><br>
+    <label>Port:</label><input type="text" name="port" value="5432"><br>
+    <label>Username:</label><input type="text" name="user" value="postgres"><br>
+    <label>Password:</label><input type="password" name="password" value="postgres"><br>
+    <label>Database:</label><input type="text" name="database" value="etl_db"><br><br>
+
+    <button type="submit">Connect</button>
+</form>

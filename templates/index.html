@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to ETL App</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 100px;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            font-size: 2em;
+        }
+        .btn-group {
+            margin-top: 20px;
+        }
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the ETL App</h1>
+    <div class="btn-group">
+        <form action="/ingest" method="get">
+            <button type="submit">Ingest New Data</button>
+        </form>
+        <form action="/explore" method="get">
+            <button type="submit">Explore Existing Data</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Stored</title>
+    <style>
+        body {
+            text-align: center;
+            padding-top: 80px;
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            color: green;
+        }
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>✅ Data successfully stored in {{ db }}!</h2>
+
+    <form action="/">
+        <button type="submit">Back to Home</button>
+    </form>
+
+    <form action="/query">
+        <button type="submit">Explore Data</button>
+    </form>
+	<div style="margin-bottom: 20px;">
+    <form action="/" method="get">
+        <button style="padding: 6px 12px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
+            🏠 Back to Home
+        </button>
+    </form>
+</div>
+</body>
+</html>

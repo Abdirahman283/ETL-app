@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extract Data</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+            font-family: Arial, sans-serif;
+        }
+        input, select, button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Upload your data file</h2>
+	<div style="position: absolute; top: 20px; left: 20px;">
+    <form action="/" method="get">
+        <button type="submit">🏠 Home</button>
+    </form>
+	</div>
+    <form action="/extract" method="post" enctype="multipart/form-data">
+        <input type="file" name="datafile" required><br>
+        
+        <label for="format">Format (optional):</label>
+        <select name="format">
+            <option value="">Auto Detect</option>
+            <option value="csv">CSV</option>
+            <option value="json">JSON</option>
+        </select><br>
+        
+        <button type="submit">Extract Data</button>
+    </form>
+	
+</body>
+</html>
+

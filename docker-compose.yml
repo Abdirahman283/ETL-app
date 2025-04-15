@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  etl-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: etl-flash
+    depends_on:
+      - postgres
+      - mysql
+    environment:
+      - SPARK_MODE=local
+      - PYTHONUNBUFFERED=1  # Pour voir les logs en temps réel
+    ports:
+      - "5000:5000"  # Interface Flask accessible sur http://localhost:5000
+    networks:
+      - etl-net
+    restart: always
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/app  # Optionnel : pour avoir un montage dynamique
+      - ./outputs:/app/outputs
+      - ./uploads:/app/uploads
+
+  postgres:
+    image: postgres:13
+    container_name: pg-etl
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: etl_db
+    ports:
+      - "5432:5432"
+    networks:
+      - etl-net
+    restart: always
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-etl
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: etl_db
+      MYSQL_USER: etluser
+      MYSQL_PASSWORD: etlpass
+    ports:
+      - "3306:3306"
+    networks:
+      - etl-net
+    restart: always
+
+networks:
+  etl-net:
+    driver: bridge

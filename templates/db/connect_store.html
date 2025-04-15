@@ -1,0 +1,23 @@
+<!-- templates/db/connect_store.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Store in Database</title>
+</head>
+<body>
+    <h2>📦 Store your data into a database</h2>
+
+    <form action="/store" method="post">
+        <label>Select database:</label><br>
+        <input type="radio" name="db" value="mysql" required> MySQL<br>
+        <input type="radio" name="db" value="postgres"> PostgreSQL<br>
+        <input type="radio" name="db" value="mongodb"> MongoDB<br><br>
+
+        <button type="submit">Continue</button>
+    </form>
+
+    <br>
+    <a href="/">🏠 Home</a>
+</body>
+</html>
