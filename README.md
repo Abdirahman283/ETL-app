@@ -74,7 +74,7 @@ use github to clone it into a local folder ( repository link: https://github.com
 
 ```bash
 docker compose build
-docker compose up
+docker compose up -d
 ```
 
 #### Access the UI:
