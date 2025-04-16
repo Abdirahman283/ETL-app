@@ -285,18 +285,21 @@ def run_query():
     }
 
     try:
-        # Connexion à la base de données choisie
         if db_type == "postgres":
             conn = psycopg2.connect(**creds)
+            table_query = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'"
         elif db_type == "mysql":
             conn = mysql.connector.connect(**creds)
+            table_query = "SHOW TABLES"
         else:
             return "❌ Unsupported DB type.", 400
 
         cursor = conn.cursor()
-        cursor.execute(sql_query)
+        cursor.execute(table_query)
+        tables = cursor.fetchall()
 
-        # Récupération des résultats s'il y en a
+        # Requête utilisateur
+        cursor.execute(sql_query)
         try:
             rows = cursor.fetchall()
             columns = [desc[0] for desc in cursor.description]
@@ -306,11 +309,16 @@ def run_query():
         conn.commit()
         conn.close()
 
-        # Rendre la même page avec les résultats en dessous
-        return render_template("query/query.html", rows=rows, columns=columns, db_type=db_type, creds=creds)
+        return render_template("query/query.html",
+                               db_type=db_type,
+                               creds=creds,
+                               tables=tables,
+                               rows=rows,
+                               columns=columns)
 
     except Exception as e:
         return f"❌ Query failed: {str(e)}", 500
+
 
 
 
