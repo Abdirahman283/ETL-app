@@ -37,10 +37,24 @@
         .result-section {
             margin-top: 40px;
         }
+        .home-btn {
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
     <h2>🧠 SQL Query Executor for {{ db_type|capitalize }}</h2>
+
+    {% if tables %}
+        <div>
+            <strong>Available tables:</strong>
+            <ul>
+                {% for table in tables %}
+                    <li>{{ table[0] }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
 
     <div class="form-section">
         <form method="POST" action="/run_query">
@@ -54,7 +68,13 @@
             <button type="submit">▶ Execute</button>
         </form>
     </div>
-
+    <div class="home-btn">
+        <form action="/" method="get">
+            <button style="padding: 6px 12px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
+                🏠 Back to Home
+            </button>
+        </form>
+    </div>
     {% if rows %}
     <div class="result-section">
         <h3>📄 Query Result</h3>
@@ -78,13 +98,7 @@
         </table>
     </div>
     {% endif %}
-	<div style="margin-bottom: 20px;">
-    <form action="/" method="get">
-        <button style="padding: 6px 12px; background-color: #007BFF; color: white; border: none; border-radius: 5px;">
-            🏠 Back to Home
-        </button>
-    </form>
-</div>
+
 
 </body>
 </html>
